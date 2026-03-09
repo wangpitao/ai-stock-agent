@@ -10,6 +10,14 @@ An automated stock trading monitoring system based on AI (LLM) and technical ana
 <a id="english"></a>
 ## 🇬🇧 English Documentation
 
+### Screenshots
+
+![Dashboard Overview](assets/screenshot_1.jpg)
+*Real-time AI Decision Dashboard*
+
+![Settings Panel](assets/screenshot_2.jpg)
+*Global Settings & Monitoring Control*
+
 ### Features
 
 - **Multi-Model Support**: Compatible with OpenAI-format APIs (Qwen, DeepSeek, GPT-4, etc.).
@@ -55,6 +63,16 @@ An automated stock trading monitoring system based on AI (LLM) and technical ana
     WECOM_WEBHOOK=https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxxxxxxx
     ```
 
+### Notification Setup (WeCom)
+
+To receive real-time trading alerts on your phone:
+
+1.  Create a group chat in **WeCom (Enterprise WeChat)**.
+2.  Click the gear icon (Settings) -> **Group Robot** -> **Add Robot**.
+3.  Select "Group Robot" and give it a name.
+4.  After adding, copy the **Webhook URL**.
+5.  Paste this URL into your `.env` file as `WECOM_WEBHOOK` or enter it in the Streamlit Sidebar settings.
+
 ### Usage
 
 Start the Streamlit interface:
@@ -62,6 +80,10 @@ Start the Streamlit interface:
 ```bash
 streamlit run gui.py
 ```
+
+- **Sidebar**: Configure models, API keys, and notification settings.
+- **Main Panel**: View real-time prices, AI decisions, and technical indicators.
+- **AI Decision Perspective**: A rolling history of the last 15 AI decisions to track logic consistency.
 
 ### Disclaimer
 
@@ -73,6 +95,14 @@ streamlit run gui.py
 
 <a id="chinese"></a>
 ## 🇨🇳 中文文档
+
+### 界面概览
+
+![Dashboard Overview](assets/screenshot_1.jpg)
+*AI 实时决策透视看板*
+
+![Settings Panel](assets/screenshot_2.jpg)
+*全局设置与监控面板*
 
 ### 功能特性
 
@@ -121,13 +151,32 @@ streamlit run gui.py
     
     或者在您的服务器/部署环境中直接设置这些环境变量。
 
-### 运行
+### 消息推送配置 (企业微信)
+
+为了在手机上实时接收交易预警，建议配置企业微信机器人：
+
+1.  在 **企业微信** 中发起一个群聊 (或者使用现有群聊)。
+2.  点击群设置 (右上角三个点) -> **群机器人** -> **添加机器人**。
+3.  点击右上角“新创建一个机器人”，取个名字并添加。
+4.  添加成功后，复制 **Webhook 地址**。
+5.  将该地址填入 `.env` 文件的 `WECOM_WEBHOOK` 字段，或者在网页端侧边栏的“通知设置”中填入。
+
+### 使用说明
 
 启动 Streamlit 界面：
 
 ```bash
 streamlit run gui.py
 ```
+
+- **侧边栏 (Sidebar)**: 
+    - **API 设置**: 动态切换模型 (Qwen, DeepSeek 等) 并配置 Key。
+    - **持仓录入**: 输入您的持仓代码、数量和成本，AI 将基于此进行止盈止损分析。若输入 `代码,0,0` 则视为加入自选股监控。
+    - **通知设置**: 开启/关闭非交易时间通知，配置 Webhook。
+- **主面板**: 
+    - **深度回测**: 使用历史数据验证策略。
+    - **多股实时监控**: 7x24小时轮询监控，展示 AI 实时买卖建议。
+- **AI 决策透视**: 表格化展示最近 15 次 AI 的决策逻辑、置信度及详细理由。
 
 ### 注意事项
 
